@@ -52,25 +52,46 @@
 
 			}
 
-			.line_chart {
+/*			.line_chart {
 				align-self: center;
-			}
+			}*/
 
 			path.line {
 				fill:none;
-				stroke: black;
-				stoke-width: 2px;
+				stroke-width: 2px;
 			}
 
 			.axis path,
 			.axis line {
 				fill: none;
-				stoke: white;
-				stoke-width: 1px;
+				stoke: black;
+				stoke-width: 2px;
 			}
 			.axis text {
-
+				font-family: sans-serif;
 			}
+
+			.line.unfocused{
+				stroke-opacity: 30%;
+			}
+
+			.line.focused {
+				stroke-width: 3px;
+				stroke-opacity: 100%;
+			}
+
+			.tooltip {
+				position: absolute;
+				z-index: 10;
+			}
+
+			.tooltip p {
+				background-color: rgba(255, 255, 255, 0.7);				
+				box-shadow: 5px 5px 5px #DCDEDE;
+				padding: 1px 3px 1px 3px;
+				font-weight: bold;
+			}
+
 		</style>
 	</head>
 	<body>
@@ -88,7 +109,7 @@
 		<script type="text/javascript">
 			var width = 1000;
 			var height = 1200;
-			var margin = {top:100, right:80, bottom: 100, left:80};
+			var margin = {top:100, right:80, bottom: 100, left:100};
 
 		
 
@@ -122,12 +143,18 @@
 								return yScale(+ d.amount)
 							});
 
+
+
 			var svg = d3.select(".line_chart")
 						.append("svg")
 						.attr("width", width)
 						.attr("height", height);
 
-			var colorScale = d3.scale.ordinal().range(['#AB0000', '#177DBC', '#000000', '#FFFFFF']);
+			var tooltip = d3.select(".line_chart")
+      	                    .append("div")
+      	                    .attr("class", "tooltip");
+
+			var colorScale = d3.scale.ordinal().range(['#AB0000', '#177DBC', '#FFB900', '#0069B8']);
 
 			d3.csv("Data/read.csv", function(data){
 				var months = ["2015January", "2015February", "2015March", "2015April", "2015May", "2015June", "2015July", "2015August", "2015September", "2015October", "2015November", "2015December", "2016January"];
@@ -137,6 +164,7 @@
 					months.forEach(function(y){
 						if(d[y]){
 							myReads.push({
+								name: d.starName,
 								month: y,
 								amount: d[y]
 							}); 
@@ -153,16 +181,11 @@
 
 
 				colorScale.domain(
-					d3.extent(dataset, function(d){
+					d3.map(dataset, function(d){
 					return d.name;
 					})
 					);
 
-				function getColor(d){
-					if(dataset){
-						return colorScale(d.name);
-					}
-				};
 
 				xScale.domain(
 					d3.extent(months, function(d){
@@ -197,18 +220,19 @@
 						.append("path")
 						.attr("class", "line")
 						.attr("d", line)
-						.style("stroke", function(d,i){
-							return getColor(d);
-						});
+						.attr("stroke", function(d){
+							return colorScale(d[0].name);
+						})
+						.style("cursor","pointer") ;
 
 				svg.append("g")
 					.attr("class", "x axis")
-					.attr("transform", "translate(0, "+(height - margin.bottom) + ")")
+					.attr("transform", "translate(0, "+(height - margin.bottom + 20) + ")")
 					.call(xAxis);
 
 				svg.append("g")
 					.attr("class", "y axis")
-					.attr("transform", "translate("+margin.left + ",0)")
+					.attr("transform", "translate("+(margin.left-20) + ",0)")
 					.call(yAxis);
 
 				groups.append("text")
@@ -220,7 +244,36 @@
 					  	return d.name;
 					  });
 
-			});
+				d3.selectAll("path.line")
+					.on("mouseover", mouseoverFunc)
+					.on("mouseout", mouseoutFunc)
+					.on("mousemove", mousemoveFunc); 
+
+			}); //end of data csv
+
+
+	function mouseoverFunc(d) {
+
+
+		d3.selectAll("path.line").classed("unfocused", true);
+		d3.select(this).select("path.line").classed("unfocused", false).classed("focused", true);
+		tooltip
+			.style("display", null) 
+			.html("<p>" + d[0].name + "</br>" + d.month + ": " + d[0].reads + "</p>");
+	}
+
+	function mouseoutFunc() {
+			d3.selectAll("path.line").classed("unfocused", false).classed("focused", false);
+			tooltip.style("display", "none");  
+	}
+
+	function mousemoveFunc(d) {
+		tooltip
+			.style("top", (d3.event.pageY - 10) + "px" )
+			.style("left", (d3.event.pageX + 10) + "px");
+	}
+
+
 		</script>
 	</body>
 </html>
