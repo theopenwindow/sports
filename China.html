@@ -18,6 +18,14 @@
 			color: white;
 		}
 
+		p {
+			color: white;
+			margin-left: 50px;	
+			margin-bottom: 50px;
+			font-size:18px;	
+		
+		}
+
 		.btn {
 			  background: #3498db;
 			  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
@@ -31,7 +39,7 @@
 			  text-shadow: 1px 1px 3px #666666;
 			  font-family: Arial;
 			  color: #ffffff;
-			  font-size: 20px;
+			  font-size: 30px;
 			  padding: 5px 15px 2px 15px;
 			  text-decoration: none;
 			  margin-left: 5px;
@@ -73,7 +81,7 @@
 		#NBA {
 		    margin: auto;
 		    padding-top: 50px;
-		    width: 20%;
+		    width: 40%;
 		}
 
 	</style>
@@ -81,6 +89,8 @@
 <body>
 <div class="container">
 	<h1><font color="#177DBC">宁泽涛</font> V.S. <font color="#AB0000">刘翔</font>，2015与他们最相关的<button class="btn" id="data_word">词条</button><button class="btn" id="data_person">人物</button><button class="btn" id="data_text">汉字</button> 是……</h1>
+	<p>相关阅读量=某词语/人名/汉字与该明星同时被阅读的数量（M:百万）</p>
+
 	<div id="text_freq">
 		<p><b>“创”</b>是和宁泽涛相关度最高的汉字</p>
 		<img src="img/Ning_Text.png" alt="NingZetao_Text" height="300">
@@ -88,10 +98,11 @@
 		<img src="img/Liu_Text.png" alt="LiuXiang_Text" height="300">
 	</div>
 
-
  	<div id = "bar_Chart"></div>
  	<div id="NBA">
  		<a href="NBA.html" class="btn">科比 V.S. 库里？</a>
+ 		<br><br><br>
+ 		<a href="index.html" class="btn">2015关注量变化对比</a>
  	</div>
 </div> <!-- end container -->
 
@@ -315,13 +326,14 @@
  		 	labels.transition()
  		 		  .duration(300)
  		 		  .attr("transform", function(d,i){
-					  	return "translate("+(width/2-xScale(+d.read)-85)+ "," + (yScale(i)+30) +")";
+					  	return "translate("+(width/2-xScale(+d.read)-135)+ "," + (yScale(i)+30) +")";
 					  })
 				  .text(function(d){
 					  	return d.word;
 					  })
 				  .attr("font-family", "sans-serif")
 				  .attr("font-weight", "bold")
+				  .attr("font-size", "25px")
 				  .attr("fill", "white");
 
  		 };
@@ -377,13 +389,14 @@
  		 	labels.transition()
  		 		  .duration(300)
  		 		  .attr("transform", function(d,i){
-					  	return "translate("+(xScale(+d.read)+(width/2 + 30))+ "," + (yScale(i)+30) +")";
+					  	return "translate("+(xScale(+d.read)+(width/2 + 60))+ "," + (yScale(i)+30) +")";
 					  })
 				  .text(function(d){
 					  	return d.word;
 					  })
 				  .attr("font-family", "sans-serif")
 				  .attr("font-weight", "bold")
+				  .attr("font-size", "25px")
 				  .attr("fill", "white");
 
  		 };

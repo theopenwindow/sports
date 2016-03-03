@@ -19,6 +19,14 @@
 			color: white;
 		}
 
+		p {
+			color: white;
+			margin-left: 50px;
+			margin-bottom: 50px;	
+			font-size:18px;	
+
+		}
+
 		.btn {
 			  background: #3498db;
 			  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
@@ -32,7 +40,7 @@
 			  text-shadow: 1px 1px 3px #666666;
 			  font-family: Arial;
 			  color: #ffffff;
-			  font-size: 20px;
+			  font-size: 30px;
 			  padding: 5px 15px 2px 15px;
 			  text-decoration: none;
 			  margin-left: 5px;
@@ -74,7 +82,7 @@
 		#NBA {
 		    margin: auto;
 		    padding-top: 50px;
-		    width: 30%;
+		    width: 40%;
 		}
 
 
@@ -83,6 +91,7 @@
 <body>
 <div class="container">
 	<h1><font color="#FFB900">科比</font> V.S. <font color="#0069B8">库里</font>，2015与他们最相关的<button class="btn" id="data_word">词条</button><button class="btn" id="data_person">人物</button><button class="btn" id="data_text">汉字</button> 是……</h1>
+	<p>相关阅读量=某词语/人名/汉字与该明星同时被阅读的数量（M:百万）</p>
 
 	<div id="text_freq">
 		<p><b>“球”</b>是和科比相关度最高的汉字</p>
@@ -91,10 +100,12 @@
 		<img src="img/Cury_Text.png" alt="Cury_Text" height="300">
 	</div>
 
-
  	<div id = "bar_Chart"></div>
  	<div id="NBA">
- 		<a href="China.html" class="btn">宁泽涛 V.S. 刘翔？</a>
+ 		<a href="China.html" class="btn"> 宁泽涛 V.S. 刘翔？</a>
+ 		<br><br><br>
+ 		<a href="index.html" class="btn">2015关注量变化对比</a>
+
  	</div>
 
  	<script type="text/javascript">
@@ -326,6 +337,7 @@
 					  })
 				  .attr("font-family", "sans-serif")
 				  .attr("font-weight", "bold")
+				  .attr("font-size", "25px")
 				  .attr("fill", "white");
 
  		 };
@@ -388,6 +400,7 @@
 					  })
 				  .attr("font-family", "sans-serif")
 				  .attr("font-weight", "bold")
+				  .attr("font-size", "25px")
 				  .attr("fill", "white");
 
  		 };

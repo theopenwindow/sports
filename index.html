@@ -11,11 +11,17 @@
 			}
 
 			h1 {
-				font-size: 30px;
+				font-size: 40px;
 				text-align: center;
 				margin-top: 30px;
 				color: white;
 			}
+
+			p {
+			color: white;
+			margin-left: 100px;
+			margin-top: 30px;	
+			}			
 
 			.link {
 				margin-left: 50%;
@@ -34,9 +40,10 @@
 			  text-shadow: 1px 1px 3px #666666;
 			  font-family: Arial;
 			  color: #ffffff;
-			  font-size: 15px;
+			  font-size: 25px;
 			  padding: 5px 15px;
 			  text-decoration: none;
+			  margin: auto;
 			}
 
 			.btn:hover {
@@ -49,9 +56,6 @@
 			  text-decoration: none;
 			}
 
-			p {
-
-			}
 
 
 			path.line {
@@ -101,6 +105,7 @@
 		<a href="China.html" class="btn">中国体将</a>
 		<a href="NBA.html" class="btn">NBA球星</a>
 		</div>
+		<p>相关阅读量=某词语/人名/汉字与该明星同时被阅读的数量（M:百万）</p>
 
 		<div class="line_chart"></div>
 
@@ -237,13 +242,13 @@
 				groups.append("text")
 					  .attr("transform", function(d){
 					  	console.log(dateFormat.parse(d.reads[12].month));
-					  	return "translate("+(xScale(dateFormat.parse(d.reads[12].month))+10)+ "," +yScale(d.reads[12].amount) +")";
+					  	return "translate("+(xScale(dateFormat.parse(d.reads[12].month))+20)+ "," +yScale(d.reads[12].amount) +")";
 					  })
 					  .text(function(d){
 					  	return d.name;
 					  })
 					  .attr("fill", "white")
-					  .attr("font-size", "15px");
+					  .attr("font-size", "22px");
 
 				d3.selectAll("path.line")
 					.on("mouseover", mouseoverFunc)
