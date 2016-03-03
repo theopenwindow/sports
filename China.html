@@ -23,7 +23,7 @@
 			margin-left: 50px;	
 			margin-bottom: 50px;
 			font-size:18px;	
-		
+
 		}
 
 		.btn {
@@ -40,7 +40,7 @@
 			  font-family: Arial;
 			  color: #ffffff;
 			  font-size: 30px;
-			  padding: 5px 15px 2px 15px;
+			  padding: 5px 15px 5px 15px;
 			  text-decoration: none;
 			  margin-left: 5px;
 			}
@@ -52,7 +52,17 @@
 			  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
 			  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
 			  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-			  text-decoration: none;
+			  text-decoration: underline;
+			}
+
+		.selected {
+			  background: #3cb0fd;
+			  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+			  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+			  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+			  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+			  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+			  text-decoration: underline;
 			}
 
 		 g .axis line,
@@ -104,6 +114,7 @@
  		<br><br><br>
  		<a href="index.html" class="btn">2015关注量变化对比</a>
  	</div>
+	<p>制图：佳昕</p>
 </div> <!-- end container -->
 
  	<script type="text/javascript">
@@ -233,6 +244,8 @@
  		 	
  		 	redraw(data_word);
  		 	redraw_left(data_word_Ning);
+ 		 	d3.selectAll(".btn").classed("selected", false);
+ 		 	d3.select(".btn#data_word").classed("selected", true)
  		 	d3.select("div#bar_Chart").style("display", "inline");
  		 	d3.select("div#text_freq").style("display", "none");
 
@@ -249,6 +262,8 @@
  		 	
  		 	redraw(data_person);
  		 	redraw_left(data_person_Ning);
+ 		 	d3.selectAll(".btn").classed("selected", false);
+ 		 	d3.select(".btn#data_person").classed("selected", true)
  		 	d3.select("div#bar_Chart").style("display", "inline");
  		 	d3.select("div#text_freq").style("display", "none");
 
@@ -256,6 +271,8 @@
 
  		 d3.select("#data_text")
  		 	.on("click", function(){
+ 		 	d3.selectAll(".btn").classed("selected", false);
+ 		 	d3.select(".btn#data_text").classed("selected", true)
  		 	d3.select("div#text_freq").style("display", "block");
  		 	d3.select("div#bar_Chart").style("display", "none");
  		 	});
@@ -272,7 +289,8 @@
 	 	xScale_left.domain([0, max_right]);
 
  		redraw_left(data_word_Ning);
- 		redraw(data_word);		 
+ 		redraw(data_word);	
+ 		d3.select(".btn#data_word").classed("selected", true);	 
 
 //set functions:
 

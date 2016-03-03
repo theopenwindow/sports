@@ -108,6 +108,7 @@
 		<p>相关阅读量=某词语/人名/汉字与该明星同时被阅读的数量（M:百万）</p>
 
 		<div class="line_chart"></div>
+	    <p>制图：佳昕</p>
 
 
 		<script type="text/javascript">
@@ -242,7 +243,7 @@
 				groups.append("text")
 					  .attr("transform", function(d){
 					  	console.log(dateFormat.parse(d.reads[12].month));
-					  	return "translate("+(xScale(dateFormat.parse(d.reads[12].month))+20)+ "," +yScale(d.reads[12].amount) +")";
+					  	return "translate("+(xScale(dateFormat.parse(d.reads[12].month))+30)+ "," +yScale(d.reads[12].amount) +")";
 					  })
 					  .text(function(d){
 					  	return d.name;
