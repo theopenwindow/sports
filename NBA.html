@@ -291,7 +291,8 @@
 
 	 	xScale.domain([0, max_right]);
 	 	xScale_left.domain([0, max_right]);
-
+ 		d3.selectAll(".btn").classed("selected", false);
+ 		d3.select(".btn#data_word").classed("selected", true);
  		redraw_left(data_word);
  		redraw(data_word_Cury);
 
