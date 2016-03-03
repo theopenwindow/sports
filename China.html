@@ -5,6 +5,9 @@
 	<title>Key Comparison between Sports Stars</title>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 	<style>
+		body {
+			background-color: black;
+		}
 		.container {
 			margin: 50px;
 		}
@@ -12,6 +15,7 @@
 		h1 {
 			font-size: 30px;
 			margin: 50px;
+			color: white;
 		}
 
 		.btn {
@@ -23,11 +27,11 @@
 			  background-image: linear-gradient(to bottom, #3498db, #2980b9);
 			  -webkit-border-radius: 10;
 			  -moz-border-radius: 10;
-			  border-radius: 5px;
+			  border-radius: 2px;
 			  text-shadow: 1px 1px 3px #666666;
 			  font-family: Arial;
 			  color: #ffffff;
-			  font-size: 15px;
+			  font-size: 20px;
 			  padding: 5px 15px 2px 15px;
 			  text-decoration: none;
 			  margin-left: 5px;
@@ -56,12 +60,14 @@
 		.axis_left text {
 			font-family: sans-serif;
 			font-size: 12px;
+			fill: white;
 		}
 
 		#text_freq {
 			padding-left: 30%;
 			font-family: sans-serif;
 			font-size: 20px;
+			color: white
 		}
 
 		#NBA {
@@ -315,7 +321,8 @@
 					  	return d.word;
 					  })
 				  .attr("font-family", "sans-serif")
-				  .attr("font-weight", "bold");
+				  .attr("font-weight", "bold")
+				  .attr("fill", "white");
 
  		 };
 
@@ -376,7 +383,8 @@
 					  	return d.word;
 					  })
 				  .attr("font-family", "sans-serif")
-				  .attr("font-weight", "bold");
+				  .attr("font-weight", "bold")
+				  .attr("fill", "white");
 
  		 };
 
